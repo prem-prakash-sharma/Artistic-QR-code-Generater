@@ -1,4 +1,3 @@
-// script.js
 document
   .getElementById("promptForm")
   .addEventListener("submit", async (event) => {
@@ -6,10 +5,11 @@ document
 
     const qrCodeData = document.getElementById("qrCodeData").value;
     const textPrompt = document.getElementById("textPrompt").value;
+    const qrCodeImage = document.getElementById("qrCodeImage");
 
     const submitButton = document.querySelector('button[type="submit"]');
-    submitButton.disabled = true; // Disable the button
-    submitButton.textContent = "Loading..."; // Change the button text
+    submitButton.disabled = true;
+    submitButton.textContent = "Loading...";
 
     try {
       const response = await fetch("/generate-qr", {
@@ -21,16 +21,21 @@ document
       });
 
       if (!response.ok) {
-        prompt("Error: " + response.status);
         throw new Error(`Request failed with status: ${response.status}`);
       }
+
       const result = await response.json();
-      document.getElementById("qrCodeImage").src = result.qr_code_image;
+
+      if (result.qr_code_image) {
+        qrCodeImage.src = result.qr_code_image;
+      } else {
+        qrCodeImage.src = "";
+      }
     } catch (error) {
       console.error("Error:", error);
-      prompt("Something went wrong.");
+      alert("Something went wrong. Please try again later.");
     } finally {
-      submitButton.disabled = false; // Re-enable the button
-      submitButton.textContent = "Generate QR Code"; // Change the button text
+      submitButton.disabled = false;
+      submitButton.textContent = "Generate QR Code";
     }
   });

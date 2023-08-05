@@ -1,68 +1,95 @@
-/* Reset some default styles */
+/* Reset some default styling */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Apply a background color to the body */
+/* Set a background color for the whole page */
 body {
+  background-color: #f4f4f4;
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+}
+
+/* Center the content */
+#qrCodeContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
-/* Add a container for the form and QR code */
-#container {
-  background-color: white;
-  border-radius: 10px;
+/* Style the form container */
+#promptForm {
+  background-color: #ffffff;
   padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 600px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 0 auto;
 }
 
-/* Style the form */
-form {
+/* Style the form header */
+h1 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
+/* Style form labels */
 label {
   font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
 }
 
+/* Style form input fields */
 input[type="text"],
 textarea {
   width: 100%;
   padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 3px;
+  margin-bottom: 10px;
 }
 
+/* Style buttons */
+button[type="submit"],
 button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  display: block;
+  width: 100%;
+  padding: 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
-/* Style the QR code container */
-#qrCodeContainer {
-  text-align: center;
+/* Style the Generate QR Code button */
+button[type="submit"] {
+  background-color: #3498db;
+  color: #ffffff;
 }
 
+/* Style the QR code image */
 #qrCodeImage {
   max-width: 100%;
-  height: auto;
+  height: 400px;
+  display: block;
   margin-top: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+}
+
+/* Hide the qrCodeContainer initially */
+#qrCodeContainer {
+  /* display: none; */
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive media queries */
+@media (max-width: 768px) {
+  #promptForm {
+    width: 90%;
+    max-width: 350px;
+  }
 }

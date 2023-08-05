@@ -29,7 +29,7 @@ app.post("/generate-qr", async (req, res) => {
     }
 
     const result = await response.json();
-
+    console.log({ image: result.output.output_images[0] });
     res.json({ qr_code_image: result.output.output_images[0] });
   } catch (error) {
     console.error("Error:", error);
