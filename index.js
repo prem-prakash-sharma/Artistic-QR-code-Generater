@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const fetch = require("node-fetch");
 
 app.use(express.static("public"));
 app.use(express.json());
